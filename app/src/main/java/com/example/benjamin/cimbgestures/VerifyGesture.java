@@ -8,10 +8,11 @@ import android.gesture.Prediction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class VerifyGesture extends AppCompatActivity {
 
     GestureLibrary lib;
     TextView txtResult;
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_verify);
 
         txtResult = findViewById(R.id.txtResult);
 
@@ -35,9 +36,14 @@ public class MainActivity extends AppCompatActivity {
                 for (Prediction prediction: predictionArrayList) {
                     if (prediction.score > 1.0) {
                         //txtResult.setText(prediction.name);
-                        txtResult.setText("Success");
+                        //txtResult.setText("Success");
+                        Toast.makeText(VerifyGesture.this, "Successfully verified!", Toast.LENGTH_LONG).show();
+
+                        //quit and return to telegram
+
                     } else {
-                        txtResult.setText("Failed");
+                        //txtResult.setText("Failed");
+                        Toast.makeText(VerifyGesture.this, "Failed, please try again!", Toast.LENGTH_LONG).show();
                     }
                 }
             }

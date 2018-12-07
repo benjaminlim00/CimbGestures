@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/gesture"
-    android:background="@drawable/two"
+    android:background="@drawable/setpassword"
     tools:context=".MainActivity">
 
     <TextView
@@ -23,6 +23,6 @@
         android:layout_height="wrap_content"
         android:textSize="25dp"
         android:gravity="center"
-        android:text="@string/verify_str" />
+        />
 
 </android.gesture.GestureOverlayView>
