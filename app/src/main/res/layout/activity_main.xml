@@ -11,10 +11,18 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gesture recognition"
+        android:text=""
         android:layout_gravity="center"
         android:layout_marginBottom="140dp"
         android:textSize="40sp"
         android:id="@+id/txtResult"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:gravity="center"
+        android:text="@string/verify_str" />
 
 </android.gesture.GestureOverlayView>

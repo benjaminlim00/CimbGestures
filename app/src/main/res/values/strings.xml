@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">Please verify your identity</string>
+    <string name="app_name">Gesture check</string>
+    <string name="verify_str">Please verify your identity</string>
+    <string name="reg_string">Create your gesture for future log in</string>
+
 </resources>
