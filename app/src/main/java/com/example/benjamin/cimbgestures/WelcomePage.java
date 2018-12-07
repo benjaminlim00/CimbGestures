@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -30,19 +31,16 @@ public class WelcomePage extends AppCompatActivity {
         String ssid = wifiManager.getConnectionInfo().getSSID();
 
 
-
-        if (sharedPreferences.contains(ssid)){
+        if (sharedPreferences.contains(ssid)) {
             Toast.makeText(this.getApplicationContext(), "SSID Verified", Toast.LENGTH_LONG).show();
             int defaultValue = 0;
             //read
-            howManyTimesBeenRun = sharedPreferences.getInt(NUMBER_OF_TIMES_RUN_KEY,defaultValue);   //number of times run always starts at default 0
+            howManyTimesBeenRun = sharedPreferences.getInt(NUMBER_OF_TIMES_RUN_KEY, defaultValue);   //number of times run always starts at default 0
             //first time message
-            if(howManyTimesBeenRun == 0){   //aka first time so registration only
+            if (howManyTimesBeenRun == 0) {   //aka first time so registration only
                 //Toast.makeText(this,"Welcome to first-time registration", Toast.LENGTH_LONG).show();
                 //for debugging
                 editSharedPref();
-
-
 
 
                 //wait for 2 sec and auto move to next screen
@@ -78,17 +76,17 @@ public class WelcomePage extends AppCompatActivity {
 //        RelativeLayout layout= findViewById(R.id.relativeLayout);
 //        layout.setOnTouchListener(this);
 
-        }
-        else {
+        } else {
             Toast.makeText(this.getApplicationContext(), "SSID Not Verified", Toast.LENGTH_LONG).show();
             //TODO verify
             verify(ssid);
         }
 
 
-
-
-
+        // ATTENTION: This was auto-generated to handle app links.
+        Intent appLinkIntent = getIntent();
+        String appLinkAction = appLinkIntent.getAction();
+        Uri appLinkData = appLinkIntent.getData();
     }
 
     private void editSharedPref() {

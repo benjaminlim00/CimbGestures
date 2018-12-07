@@ -15,24 +15,42 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="https"
+                    android:host="tinyurl.com"
+                    android:path="/ycf2qm95" />
+            </intent-filter>
         </activity>
 
-        <activity android:name=".RegisterGesture" >
+        <activity android:name=".RegisterGesture"></activity>
+
+        <activity android:name=".VerifyGesture">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="https"
+                    android:host="tinyurl.com"
+                    android:path="/y9x4qgaq" />
+            </intent-filter>
         </activity>
 
-        <activity android:name=".VerifyGesture" >
-        </activity>
 
+        <activity android:name=".RegistrationActivity"></activity>
 
-        <activity android:name=".RegistrationActivity" >
-        </activity>
-
-        <activity android:name=".DonePage" >
-        </activity>
-
+        <activity android:name=".DonePage"></activity>
 
 
     </application>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
 </manifest>

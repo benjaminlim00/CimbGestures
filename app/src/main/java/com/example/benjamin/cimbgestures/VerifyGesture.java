@@ -1,10 +1,12 @@
 package com.example.benjamin.cimbgestures;
 
+import android.content.Intent;
 import android.gesture.Gesture;
 import android.gesture.GestureLibraries;
 import android.gesture.GestureLibrary;
 import android.gesture.GestureOverlayView;
 import android.gesture.Prediction;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,7 +36,7 @@ public class VerifyGesture extends AppCompatActivity {
             @Override
             public void onGesturePerformed(GestureOverlayView gestureOverlayView, Gesture gesture) {
                 ArrayList<Prediction> predictionArrayList = lib.recognize(gesture);
-                for (Prediction prediction: predictionArrayList) {
+                for (Prediction prediction : predictionArrayList) {
                     if (prediction.score > 1.0) {
                         //txtResult.setText(prediction.name);
                         //txtResult.setText("Success");
@@ -55,9 +57,6 @@ public class VerifyGesture extends AppCompatActivity {
                         }, 2000);
 
 
-
-
-
                     } else {
                         //txtResult.setText("Failed");
                         Toast.makeText(VerifyGesture.this, "Failed, please try again!", Toast.LENGTH_LONG).show();
@@ -65,5 +64,9 @@ public class VerifyGesture extends AppCompatActivity {
                 }
             }
         });
+        // ATTENTION: This was auto-generated to handle app links.
+        Intent appLinkIntent = getIntent();
+        String appLinkAction = appLinkIntent.getAction();
+        Uri appLinkData = appLinkIntent.getData();
     }
 }
