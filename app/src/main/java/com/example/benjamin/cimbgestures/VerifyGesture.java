@@ -13,12 +13,22 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 public class VerifyGesture extends AppCompatActivity {
 
+
+
+    DatabaseReference mRootDatabaseRef = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference databaseReferencePart1;
+    String CHILD_NODE_PART1 = "Semaphore";
     GestureLibrary lib;
-//    TextView txtResult;
+    String user = "user1";
+
+//    TextView txtResult;a
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +50,11 @@ public class VerifyGesture extends AppCompatActivity {
                     if (prediction.score > 1.0) {
                         //txtResult.setText(prediction.name);
                         //txtResult.setText("Success");
+
+                        //here we set semaphore to be 1
+                        databaseReferencePart1 = mRootDatabaseRef.child(CHILD_NODE_PART1).child(user);
+                        databaseReferencePart1.setValue(1);
+
                         Toast.makeText(VerifyGesture.this, "Successfully verified!", Toast.LENGTH_LONG).show();
 
 

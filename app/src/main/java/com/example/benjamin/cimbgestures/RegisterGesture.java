@@ -9,10 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+
 public class RegisterGesture extends AppCompatActivity {
     private CanvasView canvasView;
     private Button confirmButton;
     private ImageView disappearPic;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
