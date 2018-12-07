@@ -21,4 +21,12 @@
         <item name="android:background">@color/black_overlay</item>
     </style>
 
+
+
+
+
+    <style name="Widget.Custom.ActionBar.Solid" parent="@android:style/Widget.Holo.ActionBar.Solid">
+    </style>
+
+
 </resources>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Gesture check</string>
+    <string name="app_name">CIMB Lor</string>
     <string name="verify_str">Please verify your identity</string>
     <string name="reg_string">Create your gesture for future log in</string>
     <string name="registration">Registration</string>
@@ -7,7 +7,7 @@
     <string name="password">Password</string>
     <string name="title_activity_welcome_page">WelcomePage</string>
 
-    <string name="title_activity_ssid_verification">SsidVerification</string>
+    <string name="title_activity_ssid_verification">SSID Verification</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
 

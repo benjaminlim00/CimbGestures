@@ -93,6 +93,7 @@ public class SsidVerification extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_ssid_verification);
@@ -149,7 +150,7 @@ public class SsidVerification extends AppCompatActivity {
         } else {
             show();
         }
-    }
+}
 
     private void hide() {
         // Hide UI first
