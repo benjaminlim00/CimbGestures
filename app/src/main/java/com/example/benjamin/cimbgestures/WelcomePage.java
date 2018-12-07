@@ -9,6 +9,7 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -19,6 +20,7 @@ public class WelcomePage extends AppCompatActivity {
     private int howManyTimesBeenRun = 0;
     private static final String NUMBER_OF_TIMES_RUN_KEY = "NUMBER_OF_TIMES_RUN_KEY";
     private SharedPreferences sharedPreferences;
+    private SharedPreferences sshareeP;
     private WifiManager wifiManager;
 
 
@@ -27,12 +29,14 @@ public class WelcomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome_page);
         sharedPreferences = getPreferences(Context.MODE_PRIVATE); //create shared preferences
+        sshareeP = getSharedPreferences("ssid", MODE_PRIVATE);
         wifiManager = getApplicationContext().getSystemService(WifiManager.class);
         String ssid = wifiManager.getConnectionInfo().getSSID();
 
 
-        if (sharedPreferences.contains(ssid)) {
+        if (sshareeP.getString(ssid,null)!=null) {
             Toast.makeText(this.getApplicationContext(), "SSID Verified", Toast.LENGTH_LONG).show();
+            Log.d("TAG", "Ssid succ: " + ssid);
             int defaultValue = 0;
             //read
             howManyTimesBeenRun = sharedPreferences.getInt(NUMBER_OF_TIMES_RUN_KEY, defaultValue);   //number of times run always starts at default 0
@@ -77,9 +81,13 @@ public class WelcomePage extends AppCompatActivity {
 //        layout.setOnTouchListener(this);
 
         } else {
+            Log.d("TAG", "Ssid fucc : " + ssid);
             Toast.makeText(this.getApplicationContext(), "SSID Not Verified", Toast.LENGTH_LONG).show();
             //TODO verify
-            verify(ssid);
+            Intent intento = new Intent(WelcomePage.this, SsidVerification.class);
+            WelcomePage.this.startActivity(intento);
+            WelcomePage.this.finish();
+            //verify(ssid);
         }
 
 

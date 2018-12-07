@@ -18,14 +18,14 @@ import java.util.ArrayList;
 public class VerifyGesture extends AppCompatActivity {
 
     GestureLibrary lib;
-    TextView txtResult;
+//    TextView txtResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify);
 
-        txtResult = findViewById(R.id.txtResult);
+//        txtResult = findViewById(R.id.txtResult);
 
         lib = GestureLibraries.fromRawResource(this, R.raw.gesture);
         if (!lib.load()) {
@@ -70,3 +70,13 @@ public class VerifyGesture extends AppCompatActivity {
         Uri appLinkData = appLinkIntent.getData();
     }
 }
+
+
+//<ImageView
+//        android:id="@+id/verifygesturepic"
+//                android:layout_width="161dp"
+//                android:layout_height="197dp"
+//                android:layout_centerHorizontal="true"
+//
+//                android:layout_marginTop="300dp"
+//                android:background="@drawable/fingerdraw" />

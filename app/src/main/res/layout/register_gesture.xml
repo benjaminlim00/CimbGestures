@@ -1,22 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:layout_alignParentBottom="true"
-    android:background="@drawable/setpassword"
-    tools:context=".RegisterGesture"
-    android:orientation="vertical">
-
+    tools:context=".RegisterGesture">
+    
     <com.example.benjamin.cimbgestures.CanvasView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_above="@id/linearLay"
-
-
+        android:layout_below="@id/reggestureheader"
         android:id="@+id/canvas"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:id="@+id/reggestureheader"
+        android:background="@drawable/regheader" />
+
+    <ImageView
+        android:id="@+id/reggesturetext"
+        android:layout_width="221dp"
+        android:layout_height="55dp"
+        android:layout_below="@+id/reggestureheader"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:background="@drawable/reggesturetext" />
+
+
 
 
     <LinearLayout
@@ -27,9 +42,12 @@
         android:layout_alignParentBottom="true">
 
 
+
+
+
         <Button
             android:id="@+id/confirmButton"
-            android:background="#000000"
+            android:background="@drawable/regbutton"
             android:text="Confirm"
             android:textColor="#FFFFFF"
             android:onClick="clearCanvas"
@@ -43,11 +61,11 @@
             android:layout_margin="10dp"
 
 
-            />
+        />
 
         <Button
             android:id="@+id/clearButton"
-            android:background="#000000"
+            android:background = "@drawable/exitbutton"
             android:onClick="clearCanvas"
             android:text="Clear"
             android:textColor="#FFFFFF"
@@ -58,13 +76,9 @@
             android:layout_alignParentTop="false"
             android:layout_height="45dp"
             android:layout_margin="10dp"
-            />
-
+        />
 
 
     </LinearLayout>
-
-
-
 
 </RelativeLayout>

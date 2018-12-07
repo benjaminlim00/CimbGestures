@@ -1,28 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.gesture.GestureOverlayView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/gesture"
-    android:background="@drawable/setpassword"
     tools:context=".VerifyGesture">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:layout_gravity="center"
-        android:layout_marginBottom="140dp"
-        android:textSize="40sp"
-        android:id="@+id/txtResult"/>
-
-    <TextView
-        android:id="@+id/title"
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="25dp"
-        android:gravity="center"
-        />
+        android:layout_height="140dp"
+        android:id="@+id/verifyheader"
+        android:background="@drawable/verifyheader" />
 
-</android.gesture.GestureOverlayView>
+    <ImageView
+        android:id="@+id/verifytext"
+        android:layout_width="221dp"
+        android:layout_height="55dp"
+        android:layout_below="@+id/verifyheader"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:background="@drawable/verifytext" />
+
+    <android.gesture.GestureOverlayView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:gestureColor="#000"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/verifytext"
+        android:id="@+id/gesture"
+        tools:context=".VerifyGesture">
+
+    </android.gesture.GestureOverlayView>
+
+
+
+
+</RelativeLayout>
+

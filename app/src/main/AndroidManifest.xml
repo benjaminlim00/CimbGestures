@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.benjamin.cimbgestures">
 
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,14 +24,12 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="https"
                     android:host="tinyurl.com"
-                    android:path="/ycf2qm95" />
+                    android:path="/ycf2qm95"
+                    android:scheme="https" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".RegisterGesture"></activity>
-
+        <activity android:name=".RegisterGesture" />
         <activity android:name=".VerifyGesture">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -38,19 +38,18 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="https"
                     android:host="tinyurl.com"
-                    android:path="/y9x4qgaq" />
+                    android:path="/y9x4qgaq"
+                    android:scheme="https" />
             </intent-filter>
         </activity>
-
-
-        <activity android:name=".RegistrationActivity"></activity>
-
-        <activity android:name=".DonePage"></activity>
-
-
+        <activity android:name=".RegistrationActivity" />
+        <activity android:name=".DonePage" />
+        <activity
+            android:name=".SsidVerification"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_ssid_verification"
+            android:theme="@style/Theme.AppCompat.Dialog.Alert"></activity>
     </application>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
 </manifest>
