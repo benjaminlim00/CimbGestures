@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,7 @@ public class WelcomePage extends AppCompatActivity {
     private int howManyTimesBeenRun = 0;
     private static final String NUMBER_OF_TIMES_RUN_KEY = "NUMBER_OF_TIMES_RUN_KEY";
     private SharedPreferences sharedPreferences;
+    private WifiManager wifiManager;
 
 
     @Override
@@ -24,54 +26,65 @@ public class WelcomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome_page);
         sharedPreferences = getPreferences(Context.MODE_PRIVATE); //create shared preferences
+        wifiManager = getApplicationContext().getSystemService(WifiManager.class);
+        String ssid = wifiManager.getConnectionInfo().getSSID();
 
 
 
-        //read
-        int defaultValue = 0;
-        howManyTimesBeenRun = sharedPreferences.getInt(NUMBER_OF_TIMES_RUN_KEY,defaultValue);   //number of times run always starts at default 0
-        //first time message
-        if(howManyTimesBeenRun == 0){   //aka first time so registration only
-            //Toast.makeText(this,"Welcome to first-time registration", Toast.LENGTH_LONG).show();
-            //for debugging
-            editSharedPref();
+        if (sharedPreferences.contains(ssid)){
+            Toast.makeText(this.getApplicationContext(), "SSID Verified", Toast.LENGTH_LONG).show();
+            int defaultValue = 0;
+            //read
+            howManyTimesBeenRun = sharedPreferences.getInt(NUMBER_OF_TIMES_RUN_KEY,defaultValue);   //number of times run always starts at default 0
+            //first time message
+            if(howManyTimesBeenRun == 0){   //aka first time so registration only
+                //Toast.makeText(this,"Welcome to first-time registration", Toast.LENGTH_LONG).show();
+                //for debugging
+                editSharedPref();
 
 
 
 
+                //wait for 2 sec and auto move to next screen
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        final Intent mainIntent = new Intent(WelcomePage.this, RegistrationActivity.class);
+                        WelcomePage.this.startActivity(mainIntent);
+                        WelcomePage.this.finish();
+                    }
+                }, 2000);
 
-            //wait for 2 sec and auto move to next screen
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    final Intent mainIntent = new Intent(WelcomePage.this, RegistrationActivity.class);
-                    WelcomePage.this.startActivity(mainIntent);
-                    WelcomePage.this.finish();
-                }
-            }, 2000);
 
+            } else {//if it is not the first time starting the app - meaning that we are doing a verification
 
-        } else {//if it is not the first time starting the app - meaning that we are doing a verification
+                editSharedPref();
 
-            editSharedPref();
+                //wait for 2 sec and auto move to next screen
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        //now we open the verification page
 
-            //wait for 2 sec and auto move to next screen
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    //now we open the verification page
+                        final Intent i = new Intent(WelcomePage.this, VerifyGesture.class);
+                        WelcomePage.this.startActivity(i);
+                        WelcomePage.this.finish();
+                    }
+                }, 2000);
 
-                    final Intent i = new Intent(WelcomePage.this, VerifyGesture.class);
-                    WelcomePage.this.startActivity(i);
-                    WelcomePage.this.finish();
-                }
-            }, 2000);
+            }
 
-        }
-
-        //touch to go next screen
+            //touch to go next screen
 //        RelativeLayout layout= findViewById(R.id.relativeLayout);
 //        layout.setOnTouchListener(this);
+
+        }
+        else {
+            Toast.makeText(this.getApplicationContext(), "SSID Not Verified", Toast.LENGTH_LONG).show();
+            //TODO verify
+            verify(ssid);
+        }
+
 
 
 
@@ -85,6 +98,19 @@ public class WelcomePage extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit(); //open a editor
         editor.putInt(NUMBER_OF_TIMES_RUN_KEY,howManyTimesBeenRun); //save the number of times ran
         editor.commit();    //commit the changes
+    }
+
+    private void verify(String ssid){
+        SharedPreferences.Editor editor = sharedPreferences.edit(); //open a editor
+        editor.putString(ssid,ssid);
+        editor.commit();
+    }
+
+    private void unverify(String ssid){
+        SharedPreferences.Editor editor = sharedPreferences.edit(); //open a editor
+        editor.remove(ssid);
+        editor.commit();
+
     }
 
 

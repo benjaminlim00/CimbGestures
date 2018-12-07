@@ -9,6 +9,11 @@ import android.view.View;
 import android.widget.Button;
 
 public class RegistrationActivity extends AppCompatActivity {
+//    private static final String NUMBER_OF_TIMES_RUN_KEY = "NUMBER_OF_TIMES_RUN_KEY";
+//
+//    int defaultValue = 0;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,16 +29,22 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
     }
-
+    /*
     @Override
     protected void onResume() {
         super.onResume();
         SharedPreferences pref = this.getSharedPreferences("sharedPreferences", Context.MODE_PRIVATE);
 
 
-        pref.getString("NAME", "Android");
+        int howManyTimesBeenRun = pref.getInt(NUMBER_OF_TIMES_RUN_KEY,defaultValue);   //number of times run always starts at default 0
 
+        if (howManyTimesBeenRun != 0 ) {
+            Intent i = new Intent(RegistrationActivity.this, WelcomePage.class);
+            startActivity(i);
+        } */
 
+//        Intent i = new Intent(RegistrationActivity.this, WelcomePage.class);
+//        startActivity(i);
 
-    }
+//    }
 }
