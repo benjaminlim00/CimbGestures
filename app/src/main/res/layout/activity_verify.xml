@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/gesture"
     android:background="@drawable/setpassword"
-    tools:context=".MainActivity">
+    tools:context=".VerifyGesture">
 
     <TextView
         android:layout_width="wrap_content"

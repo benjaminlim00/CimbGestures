@@ -5,6 +5,7 @@ import android.gesture.GestureLibraries;
 import android.gesture.GestureLibrary;
 import android.gesture.GestureOverlayView;
 import android.gesture.Prediction;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -39,7 +40,23 @@ public class VerifyGesture extends AppCompatActivity {
                         //txtResult.setText("Success");
                         Toast.makeText(VerifyGesture.this, "Successfully verified!", Toast.LENGTH_LONG).show();
 
+
                         //quit and return to telegram
+                        //now we countdown 3 sec and app destroy
+
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                moveTaskToBack(true);
+                                finish();   //this should close everything
+                                //android.os.Process.killProcess(android.os.Process.myPid());
+                                //System.exit(1);
+                            }
+                        }, 2000);
+
+
+
+
 
                     } else {
                         //txtResult.setText("Failed");
